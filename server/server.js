@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import cors from "cors";
 import axios from "axios";
 
-import { PORT, mongoURL } from "./config.js";
 import Location from "./models/Location.js";
 
 import dotenv from "dotenv";
