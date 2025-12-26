@@ -42,11 +42,11 @@ export default function App() {
   }, []);
 
   /* 2. AUTO CAMERA FOLLOW */
-  useEffect(() => {
-    if (latestPos && globeEl.current) {
-      globeEl.current.pointOfView({ ...latestPos, altitude: 1.8 }, 1000);
-    }
-  }, [latestPos]);
+  // useEffect(() => {
+  //   if (latestPos && globeEl.current) {
+  //     globeEl.current.pointOfView({ ...latestPos, altitude: 1.8 }, 1000);
+  //   }
+  // }, [latestPos]);
 
   return (
     <div className="w-screen h-screen bg-[#050505] overflow-hidden font-sans text-slate-200">
