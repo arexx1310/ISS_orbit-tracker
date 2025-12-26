@@ -6,6 +6,13 @@ import axios from "axios";
 import { PORT, mongoURL } from "./config.js";
 import Location from "./models/Location.js";
 
+import dotenv from "dotenv";
+dotenv.config();
+
+const PORT = process.env.PORT || 5000;
+const mongoURL = process.env.MONGO_URL;
+
+
 const app = express();
 app.use(cors());
 app.use(express.json());
