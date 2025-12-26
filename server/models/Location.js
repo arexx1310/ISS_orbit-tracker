@@ -1,14 +1,20 @@
 import mongoose from "mongoose";
 
-const LocationSchema = new mongoose.Schema({
-  lat: { type: Number, required: true },
-  lon: { type: Number, required: true },
-  altitude: Number,
-  velocity: Number,
-  timestamp: { type: Date, default: Date.now }
-});
+const locationSchema = new mongoose.Schema(
+  {
+    lat: { type: Number, required: true },
+    lon: { type: Number, required: true },
+    altitude: { type: Number, required: true },
+    velocity: { type: Number, required: true },
+    timestamp: { type: Date, default: Date.now },
+  },
+  { 
+    // Capped at ~10MB or 20,000 documents
+    capped: { size: 10485760, max: 20000 } 
+  }
+);
 
-// Index for fast latest lookup
-LocationSchema.index({ timestamp: -1 });
+// Indexing the timestamp makes history queries lightning fast
+locationSchema.index({ timestamp: -1 });
 
-export default mongoose.model("Location", LocationSchema);
+export default mongoose.model("Location", locationSchema);
