@@ -25,7 +25,11 @@ export default function App() {
 
     const fetchLatest = async () => {
       try {
-        const res = await fetch("https://iss-orbit-tracker.onrender.com/api/iss-latest");
+       const res = await fetch(
+        "https://iss-orbit-tracker.onrender.com/api/iss-latest",
+        { cache: "no-store" }
+      );
+
         if (!res.ok) return;
         const data = await res.json();
         
